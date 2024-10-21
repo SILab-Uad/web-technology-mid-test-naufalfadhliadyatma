@@ -16,10 +16,10 @@ const generatePassword = (length, options) => {
     if (options.includeNumbers) characterPool += numbers;
     if (options.includeSpecialChars) characterPool += specialChars;
 
-    if (characterPool === "") {
-        alert("Please select at least one option for password generation!");
-        return "";
-    }
+  // If no character types are selected, throw an error
+  if (characterPool === "") {
+    throw new Error("At least one character type must be selected.");
+}
     // TODO: Generate the password based on the selected criteria
     let password = "";
     for (let i = 0; i < length; i++) {
@@ -53,4 +53,7 @@ function copyToClipboard() {
     } else {
         alert("No password to copy!");
     }
-}
+};
+module.exports = {
+    generatePassword
+};
